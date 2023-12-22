@@ -1,0 +1,18 @@
+{
+  "neoconf": {
+    "plugins": {
+      "rust_analyzer": {
+        "enabled": true
+      }
+    }
+  },
+  "lspconfig": {
+    "rust_analyzer": {
+      "rust-analyzer.cargo.target": "thumbv7em-none-eabihf",
+      "rust-analyzer.check.targets": ["thumbv7em-none-eabihf"],
+      "rust-analyzer.cargo.features": ["use_defmt", "use_rtt"],
+      "rust-analyzer.check.allTargets": false,
+      "rust-analyzer.procMacro.enable": true
+    }
+  }
+}

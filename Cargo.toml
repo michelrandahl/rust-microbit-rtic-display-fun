@@ -1,0 +1,32 @@
+[package]
+name = "rust-microbit-rtic-display-fun"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Enabling the 'critical-section-single-core' feature optimizes critical sections for single-core systems.
+# This provides a more efficient implementation by using simpler and faster code to disable and enable interrupts,
+# which is beneficial for real-time applications running on single-core processors like the micro:bit v2.
+cortex-m = { version = "0.7.7", features = [ "critical-section-single-core" ] }
+cortex-m-rt = "0.7.3"
+
+rtt-target = { version = "0.3.1", features = ["cortex-m"], optional = true }
+panic-rtt-target = { version = "0.1.2", features = ["cortex-m"], optional = true }
+
+defmt-rtt = {version = "0.4.0", optional = true }
+defmt = { version = "0.3.5", optional = true }
+panic-halt = { version = "0.2.0", optional = true }
+
+nb = "1.0.0"
+heapless = "0.7.16"
+lsm303agr = "0.3.0"
+embedded-hal = "0.2.7"
+microbit-v2 = "0.13.0"
+rtic = { version = "2.0.1", features = [ "thumbv7-backend" ] }
+
+[features]
+default = []
+use_defmt = ["defmt", "defmt-rtt", "panic-halt"]
+use_rtt = ["rtt-target", "panic-rtt-target"]
